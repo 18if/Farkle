@@ -1,0 +1,17 @@
+class Farkle:
+  def __init__():
+    rolls
+    players
+  def die():
+    rolls
+  def scoring_sheet():
+    different ways to score
+    adds score to player
+  def move():
+    player rolls dice
+    sets aside dice if wished
+    rolls remaining dice until he is done
+  def play():
+    move
+    show individual score after each move
+    keeps repeationg until someone has reached 10000 points and display "____ wins!"
