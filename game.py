@@ -7,7 +7,7 @@ class Farkle:
     self.gameover = False
     self.players = int(input('How many players? '))
     self.playing = range(1,self.players)
-    self.my_score = 0
+    self.my_score = [0 for player in range(self.playing)]
     self.scores = {1:100, 2:20, 3:30, 4:40, 5:50, 6:60}
 
   def move(self):
@@ -23,3 +23,5 @@ class Farkle:
           print("Player {} wins!".format(player))
           self.gameover = True
           break
+a = Farkle()
+a.play()
