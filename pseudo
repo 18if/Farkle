@@ -16,3 +16,4 @@ class Farkle:
     calls move
     show individual score after each call of move
     keeps repeationg until someone has reached 10000 points and displays "____ wins!"
+(Actual contents may be altered due to a stressed developer)
