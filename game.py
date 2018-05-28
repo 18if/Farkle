@@ -2,26 +2,13 @@ import random
 class Farkle:
   
   
-  def __init__(self):
-    self.rolls = []
-    self.gameover = False
-    self.players = int(input('How many players? '))
-    self.playing = range(1,self.players)
-    self.my_score = [0 for player in range(self.playing)]
-    self.scores = {1:100, 2:20, 3:30, 4:40, 5:50, 6:60}
+  def __init__(self, playing = 2):
+    self.SCORES = {1:100, 2:20, 3:30, 4:40, 5:50, 6:60}
+    self.scores = [0 for player in range(num_players)]
 
-  def move(self):
-    for i in range(5):
-      self.rolls.append(random.randint(1,6))
-      self.my_score += sum(self.scores[a] for a in self.rolls)
-  def play(self):
-    while not self.gameover:
-      for player in self.playing:
-        self.move()
-        print(self.my_score)
-        if self.my_score >= 10000:
-          print("Player {} wins!".format(player))
-          self.gameover = True
-          break
-a = Farkle()
-a.play()
+  def move(self, player):
+    rolls = [random.randint(1,6) for n in range(6)]
+  	print('Player {}: {}'.format(player+1, rolls))
+    roll_values = [self.SCORES[roll] for roll in rolls]
+    print('Score this turn: {}\n'.format(sum(roll_values)))
+    self.scores[player] += sum(roll_values)
