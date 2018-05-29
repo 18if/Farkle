@@ -4,7 +4,7 @@ class Farkle:
   
   def __init__(self, playing = 2):
     self.SCORES = {1:100, 2:20, 3:30, 4:40, 5:50, 6:60}
-    self.scores = [0 for player in range(num_players)]
+    self.scores = [0 for player in range(playing)]
 
   def move(self, player):
     rolls = [random.randint(1,6) for n in range(6)]
