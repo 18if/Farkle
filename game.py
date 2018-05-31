@@ -32,7 +32,7 @@ class Farkle:
     
     return new_list, remaining
   
-  def complicated_Scores(self, player):
+  def complicated_scores(self, player):
     indexes = input("Pick the indices you wish to extract separated by spaces(remember to start from 0)").split(' ')
     indexes = [int(n) for n in indexes]
     new_list = take_from_list(self.rolls, indexes)[0]
