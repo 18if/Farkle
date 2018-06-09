@@ -5,12 +5,12 @@ class Farkle:
   
   def __init__(self, playing = 2):
     self.SCORES = {
-      1: {1: 100, 2: 200, 3: 300, 4: 2000, 5: 2100, 6: 2200},
-      2: {1: 0, 2: 0, 3: 200, 4: 400, 5: 500, 6: 600},
-      3: {1: 30, 2: 60, 3: 300, 4: 600, 5: 1000, 6: 2000},
-      4: {1: 40, 2: 80, 3: 400, 4: 800, 5: 2000, 6: 2500},
-      5: {1: 50, 2: 100, 3: 500, 4: 1000, 5: 1050, 6: 1100},
-      6: {1: 60, 2: 120, 3: 600, 4: 1200, 5: 2000, 6: 3000}}
+      1: {1: 100, 2: 200, 3: 300, 4: 2000, 5: 2200, 6: 2300},
+      2: {1: 20, 2: 40, 3: 200, 4: 400, 5: 440, 6: 600},
+      3: {1: 30, 2: 60, 3: 300, 4: 600, 5: 660, 6: 900},
+      4: {1: 40, 2: 80, 3: 400, 4: 800, 5: 880, 6: 1200},
+      5: {1: 50, 2: 100, 3: 500, 4: 1000, 5: 1100, 6: 1500},
+      6: {1: 60, 2: 120, 3: 600, 4: 1200, 5: 1420, 6: 2020}}
     self.scores = [0 for player in range(playing)]
 
   def move(self, player):
@@ -31,9 +31,14 @@ class Farkle:
         self.rolls = [random.randint(1,6) for n in self.remaining]
         print('Player {} Rolled: {}'.format(player+1, self.rolls))
         if self.rolls == []:
-          self.rolls = [random.randint(1,6) for n in range(6)]
+          return False
       if question == 'n':
-        print('ok')
+        die_num = self.new_list[0]
+        c = Counter(self.new_list)
+        b = c[die_num]
+        die_score = self.SCORES[die_num][b]
+        self.scores[player] += die_score
+        print("Score last move: {}".format(die_score))
         return False
   
   def take_from_list(self, player, source, indexes):
@@ -54,23 +59,8 @@ class Farkle:
 
     print(self.new_list, self.remaining)
 
-      
-
-
-
   def play(self, player):
     self.move(player)
     print(self.scores)
-    
-
-class Die:
-  
-  def __init__(self, sides=6):
-    self.value = 1
-    self.sides = sides
-  
-  def __str__(self):
-    return str(self.value)
-
-  def roll(self):
-    self.value = random.randint(1, self.sides)
+    if self.scores >= 10000:
+      print("Player {} wins!".format(player))
